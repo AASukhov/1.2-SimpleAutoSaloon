@@ -1,5 +1,9 @@
 public class Seller {
     private Shop shop;
+    private static final int RECEIVE_TIME = 1000;
+    private static final int CAR_INPUT = 3000;
+    private static final int CARS = 10;
+
 
     public Seller(Shop shop) {
         this.shop = shop;
@@ -12,7 +16,7 @@ public class Seller {
                 System.out.println("Машин нет");
                 wait();
             }
-            Thread.sleep(1000);
+            Thread.sleep(RECEIVE_TIME);
             System.out.println("Покупатель " + Thread.currentThread().getName() + " уехал на новеньком авто");
 
         } catch (InterruptedException e) {
@@ -22,10 +26,10 @@ public class Seller {
     }
 
     public void acceptCar () {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < CARS; i++) {
             try {
                 System.out.println("Производитель toyota выпустил 1 авто");
-                Thread.sleep(3000);
+                Thread.sleep(CAR_INPUT);
                 shop.cars.add(new Car());
                 synchronized (this) {
                     notify();
