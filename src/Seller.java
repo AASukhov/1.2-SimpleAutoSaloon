@@ -12,9 +12,9 @@ public class Seller {
     public synchronized Car buyCar() {
             System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
         try {
-            while (shop.cars.size()==0) {
-                System.out.println("Машин нет");
-                wait();
+            while (shop.cars.size() == 0) {
+                    System.out.println("Машин нет");
+                    wait();
             }
             Thread.sleep(RECEIVE_TIME);
             System.out.println("Покупатель " + Thread.currentThread().getName() + " уехал на новеньком авто");
@@ -30,8 +30,8 @@ public class Seller {
             try {
                 System.out.println("Производитель toyota выпустил 1 авто");
                 Thread.sleep(CAR_INPUT);
-                shop.cars.add(new Car());
                 synchronized (this) {
+                    shop.cars.add(new Car());
                     notify();
                 }
             } catch (InterruptedException e) {

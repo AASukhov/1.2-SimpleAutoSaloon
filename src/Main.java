@@ -15,5 +15,6 @@ public class Main {
                 E.printStackTrace();
             }
         }
+        //new Thread(null, shop::acceptCar, "Производитель").start();
     }
 }
